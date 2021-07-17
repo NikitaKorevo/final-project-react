@@ -8,7 +8,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      whichPageNow: 1
+      whichPageNow: 1,
+      whichSortingNow: 'popularity.desc'
     };
   }
 
@@ -17,11 +18,16 @@ class App extends Component {
     this.setState({whichPageNow: page});
   }
 
+  toggleSorting = (x) => {
+    console.log(x);
+    this.setState({whichSortingNow: x});
+  }
+
   render() {
     return (
       <div>
-        <Header />
-        <Main page={this.state.whichPageNow} />
+        <Header toggleSorting={this.toggleSorting}/>
+        <Main whichSortingNow={this.state.whichSortingNow} page={this.state.whichPageNow} />
         <Nav getPage={this.getPage} />
       </div>
     );

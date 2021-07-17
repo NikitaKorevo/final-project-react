@@ -20,7 +20,7 @@ class Header extends Component {
         <Logo />
         <InputSearch />
         <p>Сортировать по:</p>
-        <SelectSorting />
+        <SelectSorting toggleSorting={this.props.toggleSorting} />
         </section>
         <LoginLogout />
       </header>

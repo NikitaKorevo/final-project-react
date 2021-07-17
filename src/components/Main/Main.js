@@ -16,9 +16,20 @@ class Main extends Component {
   componentDidUpdate() {
     if (this.props.page !== this.state.whichPageNow) {
       console.log(this.state.whichPageNow);
-      this.setState({ whichPageNow: this.props.page});
-      this.componentDidMount();
+      this.setState({ whichPageNow: this.props.page}, function () {
+        this.componentDidMount();
+      });
     }
+
+    if (this.props.whichSortingNow !== this.state.whichSortingNow) {
+      this.setState({whichSortingNow: this.props.whichSortingNow}, function() {
+        this.updateComponentDidMount();
+      });
+    }
+  }
+
+  updateComponentDidMount = () => {
+    this.componentDidMount();
   }
 
   componentDidMount() {
@@ -46,7 +57,6 @@ class Main extends Component {
         }
       )
   }
-
 
   render() {
     const { error, isLoaded, films } = this.state;
