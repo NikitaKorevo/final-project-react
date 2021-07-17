@@ -194,6 +194,7 @@ body {
         background: url('../images/icons/double-arrow.svg') no-repeat;
         background-position: 6px 9px;
         background-color: #818DFF;
+        margin-right: 4px;
       }
       &:nth-child(2) {
         background: url('../images/icons/arrow.svg') no-repeat;
@@ -225,6 +226,7 @@ body {
       height: 30px;
       border: none;
       border-radius: 4px;
+      margin: 0 2px;
       &:hover {
         background-color: #C7CCFF;
         @media screen and (max-width: 1024px) {
@@ -259,6 +261,7 @@ body {
         background-position: 6px 9px;
         transform: rotate(180deg);
         background-color: #818DFF;
+        margin-left: 4px;
       }
       &:hover {
         background-color: #C7CCFF;
