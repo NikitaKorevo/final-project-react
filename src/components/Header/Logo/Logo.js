@@ -10,7 +10,7 @@ class Logo extends Component {
 
   render() {
     return (
-      <img src={logotype} alt={"logo"}></img>
+     <a href="/"><img src={logotype} alt="logo"></img></a> 
     );
   }
 }

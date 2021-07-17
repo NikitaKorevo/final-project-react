@@ -13,30 +13,40 @@ class Main extends Component {
     };
   }
 
-  componentDidMount() {
-      const apiKey = '7bbcabd7451880efd46ec7f3f3b268c2';
-      const maxPage = 15;
-      let whichSortingNow = this.state.whichSortingNow;
-      let whichPageNow = this.state.whichPageNow;
-      let indexFilm = 0; // пусть побудет здесь
-  
-      fetch('https://api.themoviedb.org/3/discover/movie?api_key=' + apiKey + '&language=ru-RU&sort_by=' + whichSortingNow + '&include_adult=false&include_video=false&page=' + +whichPageNow)
-        .then(res => res.json())
-        .then(
-          (result) => {
-            this.setState({
-              isLoaded: true,
-              films: result.results
-            });
-          },
-          (error) => {
-            this.setState({
-              isLoaded: true,
-              error
-            });
-          }
-        )
+  componentDidUpdate() {
+    if (this.props.page !== this.state.whichPageNow) {
+      console.log(this.state.whichPageNow);
+      this.setState({ whichPageNow: this.props.page});
+      this.componentDidMount();
+    }
   }
+
+  componentDidMount() {
+    console.log('componentDidMount');
+    const apiKey = '7bbcabd7451880efd46ec7f3f3b268c2';
+    /* const maxPage = 15; */
+    let whichSortingNow = this.state.whichSortingNow;
+    let whichPageNow = this.props.page;
+    /* let indexFilm = 0; */ // пусть побудет здесь
+  
+    fetch('https://api.themoviedb.org/3/discover/movie?api_key=' + apiKey + '&language=ru-RU&sort_by=' + whichSortingNow + '&include_adult=false&include_video=false&page=' + +whichPageNow)
+      .then(res => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            isLoaded: true,
+            films: result.results
+          });
+        },
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
+  }
+
 
   render() {
     const { error, isLoaded, films } = this.state;
@@ -49,11 +59,12 @@ class Main extends Component {
       return (
         <main className="main">
           <ul id="myUl" className="main__all-cards">
-            {films.map(el => (
+            {films.map((el, i) => (
               <UlFilms poster_path={el.poster_path}
                 vote_average={el.vote_average}
                 release_date={el.release_date}
-                title={el.title} />
+                title={el.title}
+                key={i} />
               ))}
           </ul>
         </main>

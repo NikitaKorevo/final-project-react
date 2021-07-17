@@ -9,9 +9,9 @@ class LoginLogout extends Component {
   }
   render() {
     return (
-      <section class="header__login-logout">
+      <section className="header__login-logout">
       <a href="./authorization.html" target="_blank">Вход</a>
-      <span>/</span>
+      <span> / </span>
       <a href="./registration.html" target="_blank">Регистрация</a>
     </section>
     );
