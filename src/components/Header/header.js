@@ -18,7 +18,7 @@ class Header extends Component {
         <h1 className="header__background-title">Каталог фильмов</h1>
         <section className="header__sorting">
         <Logo />
-        <InputSearch />
+        <InputSearch getInputSearchValue={this.props.getInputSearchValue} />
         <p>Сортировать по:</p>
         <SelectSorting toggleSorting={this.props.toggleSorting} />
         </section>

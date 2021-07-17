@@ -7,9 +7,15 @@ class InputSearch extends Component {
 
     }
   }
+
+  InputSearchValue = (e) => {
+   /*  console.log(e.target.value); */
+    this.props.getInputSearchValue(e.target.value);
+  }
+
   render() {
     return (
-      <input id="inputSearch" type="search" placeholder="Найти фильм..."></input>
+      <input onChange={this.InputSearchValue} id="inputSearch" type="search" placeholder="Найти фильм..."></input>
     );
   }
 }

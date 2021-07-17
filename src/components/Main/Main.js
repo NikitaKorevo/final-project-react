@@ -9,7 +9,8 @@ class Main extends Component {
       whichPageNow: 1,
       error: false,
       isLoaded: false,
-      films: []
+      films: [],
+      InputSearchValue: ''
     };
   }
 
@@ -26,6 +27,13 @@ class Main extends Component {
         this.updateComponentDidMount();
       });
     }
+
+    if (this.props.InputSearchValue !== this.state.InputSearchValue) {
+      console.log(this.props.InputSearchValue)
+      this.setState({InputSearchValue: this.props.InputSearchValue}, function() {
+        this.updateComponentDidMount();
+      });
+    }
   }
 
   updateComponentDidMount = () => {
@@ -35,12 +43,12 @@ class Main extends Component {
   componentDidMount() {
     console.log('componentDidMount');
     const apiKey = '7bbcabd7451880efd46ec7f3f3b268c2';
-    /* const maxPage = 15; */
     let whichSortingNow = this.state.whichSortingNow;
     let whichPageNow = this.props.page;
     /* let indexFilm = 0; */ // пусть побудет здесь
-  
-    fetch('https://api.themoviedb.org/3/discover/movie?api_key=' + apiKey + '&language=ru-RU&sort_by=' + whichSortingNow + '&include_adult=false&include_video=false&page=' + +whichPageNow)
+
+    if (this.props.InputSearchValue !== '') {
+      fetch('https://api.themoviedb.org/3/search/movie?api_key=' + apiKey + '&language=ru-RU&query=' + this.state.InputSearchValue + '&page=1&include_adult=false')
       .then(res => res.json())
       .then(
         (result) => {
@@ -56,7 +64,45 @@ class Main extends Component {
           });
         }
       )
-  }
+      /* console.log(this.props.InputSearchValue); */
+
+    } else {
+      fetch('https://api.themoviedb.org/3/discover/movie?api_key=' + apiKey + '&language=ru-RU&sort_by=' + whichSortingNow + '&include_adult=false&include_video=false&page=' + +whichPageNow)
+      .then(res => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            isLoaded: true,
+            films: result.results
+          });
+        },
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
+    }
+    }
+  
+    /* fetch('https://api.themoviedb.org/3/discover/movie?api_key=' + apiKey + '&language=ru-RU&sort_by=' + whichSortingNow + '&include_adult=false&include_video=false&page=' + +whichPageNow)
+      .then(res => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            isLoaded: true,
+            films: result.results
+          });
+        },
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
+  } */
 
   render() {
     const { error, isLoaded, films } = this.state;
