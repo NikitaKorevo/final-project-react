@@ -2,6 +2,7 @@ import { Component } from 'react';
 import Header from './components/Header/Header';
 import Main from './components/Main/Main';
 import Nav from './components/Nav/Nav';
+import AboutFilm from './components/AboutFilm/AboutFilm';
 import "./scss/app.scss";
 
 class App extends Component {
@@ -10,7 +11,10 @@ class App extends Component {
     this.state = {
       whichPageNow: 1,
       whichSortingNow: 'popularity.desc',
-      InputSearchValue: ''
+      InputSearchValue: '',
+      copyFilms: [],
+      titleFilm: '',
+      showAboutFilm: false
     };
   }
 
@@ -29,12 +33,26 @@ class App extends Component {
     this.setState({InputSearchValue: InputSearchValue});
   }
 
+  getTitleFilm = (titleFilm) => {
+    this.setState({titleFilm: titleFilm});
+  }
+
+  getCopyFilm = (x) => {
+    this.setState({copyFilms: x});
+    this.setState({showAboutFilm: true});
+  }
+
+  toggleShowAboutFilm = () => {
+    this.setState({showAboutFilm: false});
+  }
+
   render() {
     return (
       <div>
-        <Header getInputSearchValue={this.getInputSearchValue} toggleSorting={this.toggleSorting}/>
-        <Main InputSearchValue={this.state.InputSearchValue} whichSortingNow={this.state.whichSortingNow} page={this.state.whichPageNow} />
-        <Nav getPage={this.getPage} />
+        { !this.state.showAboutFilm && <Header getInputSearchValue={this.getInputSearchValue} toggleSorting={this.toggleSorting}/> }
+        { !this.state.showAboutFilm && <Main getCopyFilm={this.getCopyFilm} getTitleFilm={this.getTitleFilm} InputSearchValue={this.state.InputSearchValue} whichSortingNow={this.state.whichSortingNow} page={this.state.whichPageNow} /> }
+        { !this.state.showAboutFilm && <Nav getPage={this.getPage} /> }
+        { this.state.showAboutFilm && <AboutFilm toggleShowAboutFilm={this.toggleShowAboutFilm} titleFilm={this.state.titleFilm} copyFilms={this.state.copyFilms} /> }
       </div>
     );
   }
