@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Data from "./../../dummy_data/users.json"
 import UlFilms from "./UlFilms/UlFilms";
 
 class Main extends Component {
@@ -15,6 +16,8 @@ class Main extends Component {
   }
 
   componentDidUpdate() {
+    localStorage.setItem('Data', JSON.stringify(Data));
+
     if (this.props.page !== this.state.whichPageNow) {
       console.log(this.state.whichPageNow);
       this.setState({ whichPageNow: this.props.page}, function () {

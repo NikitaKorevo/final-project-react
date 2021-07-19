@@ -2,7 +2,10 @@ import { Component } from 'react';
 import Header from './components/Header/Header';
 import Main from './components/Main/Main';
 import Nav from './components/Nav/Nav';
-import AboutFilm from './components/AboutFilm/AboutFilm';
+import AboutFilm from './components/Main/AboutFilm/AboutFilm';
+import Registration from './components/Main/Registration/Registration';
+import Authorization from './components/Main/Authorization/Authorization';
+
 import "./scss/app.scss";
 
 class App extends Component {
@@ -14,12 +17,12 @@ class App extends Component {
       InputSearchValue: '',
       copyFilms: [],
       titleFilm: '',
-      showAboutFilm: false
+      showAboutFilm: false,
+      showRegistartion: false,
     };
   }
 
   getPage = (page) => {
-    /* console.log('click'); */
     this.setState({whichPageNow: page});
   }
 
@@ -29,7 +32,6 @@ class App extends Component {
   }
 
   getInputSearchValue = (InputSearchValue) => {
-    /* console.log(x); */
     this.setState({InputSearchValue: InputSearchValue});
   }
 
@@ -47,14 +49,23 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <div>
-        { !this.state.showAboutFilm && <Header getInputSearchValue={this.getInputSearchValue} toggleSorting={this.toggleSorting}/> }
-        { !this.state.showAboutFilm && <Main getCopyFilm={this.getCopyFilm} getTitleFilm={this.getTitleFilm} InputSearchValue={this.state.InputSearchValue} whichSortingNow={this.state.whichSortingNow} page={this.state.whichPageNow} /> }
-        { !this.state.showAboutFilm && <Nav getPage={this.getPage} /> }
+    if (!this.state.showAboutFilm) {
+      return (
+        <div>
+          { !this.state.showAboutFilm && <Header getInputSearchValue={this.getInputSearchValue} toggleSorting={this.toggleSorting}/> }
+          { !this.state.showAboutFilm && <Main getCopyFilm={this.getCopyFilm} getTitleFilm={this.getTitleFilm} InputSearchValue={this.state.InputSearchValue} whichSortingNow={this.state.whichSortingNow} page={this.state.whichPageNow} /> }
+          { !this.state.showAboutFilm && <Nav getPage={this.getPage} /> }
+        </div>
+      );
+    }
+
+    if (this.state.showAboutFilm) {
+      return (
+        <div>
         { this.state.showAboutFilm && <AboutFilm toggleShowAboutFilm={this.toggleShowAboutFilm} titleFilm={this.state.titleFilm} copyFilms={this.state.copyFilms} /> }
       </div>
-    );
+      );
+    }
   }
 }
 

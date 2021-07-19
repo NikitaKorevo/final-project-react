@@ -1,5 +1,5 @@
 // scss для форм регистрации и авторизации
-body {
+/* body {
   position: relative;
   background: $body-background-color;
   color: $white;
@@ -9,7 +9,7 @@ body {
   font-weight: 400;
   max-width: 1200px;
   margin: 0 auto;
-}
+} */
 
 .forms {
   position: relative;
@@ -55,7 +55,7 @@ body {
     font-size: 16px;
     font-weight: 400;
     line-height: 26px;
-    color: $black;
+    color: black;
     border: none;
     border-radius: 4px;
     margin-bottom: 14px;
@@ -81,7 +81,7 @@ body {
       font-weight: 700;
       line-height: 36px;
       padding: 0 15px;
-      color: $black;
+      color: black;
       background-color: #B8BBFF;
       border: none;
       border-radius: 4px;
@@ -92,7 +92,7 @@ body {
       font-size: 17px;
       font-weight: 700;
       line-height: 17px;
-      color: $black;
+      color: black;
       border: none;
       background-color: #394398;
     }
