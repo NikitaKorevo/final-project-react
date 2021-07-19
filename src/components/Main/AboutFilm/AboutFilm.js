@@ -1,7 +1,7 @@
 import { Component } from "react";
-import "../../scss/aboutfilm.scss";
-import house from "../../images/content/house.svg";
-import notFoundImage from "../../images/content/notFoundImage.jpg";
+import "../../../scss/aboutfilm.scss";
+import house from "../../../images/content/house.svg";
+import notFoundImage from "../../../images/content/notFoundImage.jpg";
 
 class AboutFilm extends Component {
   constructor(props) {
