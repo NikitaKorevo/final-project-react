@@ -1,10 +1,10 @@
 import { Component } from 'react';
-import Header from './components/Header/Header';
-import Main from './components/Main/Main';
-import Nav from './components/Nav/Nav';
-import AboutFilm from './components/Main/AboutFilm/AboutFilm';
-import Registration from './components/Main/Registration/Registration';
-import Authorization from './components/Main/Authorization/Authorization';
+import Header from "./components/Header/Header";
+import Main from "./components/Main/Main";
+import Nav from "./components/Nav/Nav";
+import AboutFilm from "./components/Main/AboutFilm/AboutFilm";
+import Registration from "./components/Main/Registration/Registration";
+import Authorization from "./components/Main/Authorization/Authorization";
 
 import "./scss/app.scss";
 
@@ -27,7 +27,7 @@ class App extends Component {
   }
 
   toggleSorting = (x) => {
-    console.log(x);
+    /* console.log(x); */
     this.setState({whichSortingNow: x});
   }
 
