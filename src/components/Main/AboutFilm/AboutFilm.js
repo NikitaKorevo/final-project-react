@@ -36,17 +36,17 @@ class AboutFilm extends Component {
     for (let i = 0; i < copyFilms.length; i++) {
       if (copyFilms[i].title === this.props.titleFilm) {
         thisFilm = copyFilms[i];
-        console.log(thisFilm);
+        /* console.log(thisFilm); */
       }
     }
-    console.log(copyFilms);
+    /* console.log(copyFilms); */
 
     let genre = '';
      for (let i = 0; i < thisFilm.genre_ids.length; i++) {
       for (let j = 0; j < this.state.genre.length; j++) {
         if ( thisFilm.genre_ids[i] === this.state.genre[j].id) {
           genre += this.state.genre[j].name + ", " ;
-          console.log(genre);
+          /* console.log(genre); */
         }
       }
     }

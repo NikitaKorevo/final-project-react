@@ -8,7 +8,7 @@ class SelectSorting extends Component {
     };
   }
   qwer = (e) => {
-    console.log(this.props.toggleSorting(e.target.value));
+    this.props.toggleSorting(e.target.value);
   }
 
   render() {

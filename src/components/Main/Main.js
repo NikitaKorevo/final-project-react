@@ -19,7 +19,7 @@ class Main extends Component {
     localStorage.setItem('Data', JSON.stringify(Data));
 
     if (this.props.page !== this.state.whichPageNow) {
-      console.log(this.state.whichPageNow);
+     /*  console.log(this.state.whichPageNow); */
       this.setState({ whichPageNow: this.props.page}, function () {
         this.componentDidMount();
       });
@@ -32,7 +32,7 @@ class Main extends Component {
     }
 
     if (this.props.InputSearchValue !== this.state.InputSearchValue) {
-      console.log(this.props.InputSearchValue)
+      /* console.log(this.props.InputSearchValue) */
       this.setState({InputSearchValue: this.props.InputSearchValue}, function() {
         this.updateComponentDidMount();
       });
@@ -44,7 +44,6 @@ class Main extends Component {
   }
 
   componentDidMount() {
-    console.log('componentDidMount');
     const apiKey = '7bbcabd7451880efd46ec7f3f3b268c2';
     let whichSortingNow = this.state.whichSortingNow;
     let whichPageNow = this.props.page;
@@ -88,7 +87,7 @@ class Main extends Component {
 
   qwer = (e) => {
     const node = e.target.offsetParent;
-    console.log(node.children[3].innerText);
+    /* console.log(node.children[3].innerText); */
     this.props.getTitleFilm(node.children[3].innerText);
     this.props.getCopyFilm(this.state.films);
   }
